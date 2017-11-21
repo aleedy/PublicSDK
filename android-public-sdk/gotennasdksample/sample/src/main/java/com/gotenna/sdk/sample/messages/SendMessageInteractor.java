@@ -9,9 +9,9 @@ import com.gotenna.sdk.commands.GTCommand.GTCommandResponseListener;
 import com.gotenna.sdk.commands.GTCommandCenter;
 import com.gotenna.sdk.commands.GTError;
 import com.gotenna.sdk.interfaces.GTErrorListener;
-import com.gotenna.sdk.responses.GTResponse;
 import com.gotenna.sdk.sample.models.Message;
 import com.gotenna.sdk.sample.models.Message.MessageStatus;
+import com.gotenna.sdk.responses.GTResponse;
 import com.gotenna.sdk.types.GTDataTypes.GTCommandResponseCode;
 import com.gotenna.sdk.utils.Utils;
 

@@ -1,1 +1,1 @@
-include ':sample', ':gotenna-sdk'
+include ':sample', ':gotenna-sdk', ':gotenna-open-source'

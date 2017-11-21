@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/gotenna-open-source" />
             <option value="$PROJECT_DIR$/gotenna-sdk" />
             <option value="$PROJECT_DIR$/sample" />
           </set>

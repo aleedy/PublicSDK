@@ -6,6 +6,7 @@ import com.gotenna.sdk.exceptions.GTDataMissingException;
 import com.gotenna.sdk.messages.GTBaseMessageData;
 import com.gotenna.sdk.messages.GTTextOnlyMessageData;
 import com.gotenna.sdk.sample.managers.ContactsManager;
+import com.gotenna.sdk.sample.managers.ContactsManager;
 
 import java.util.Date;
 

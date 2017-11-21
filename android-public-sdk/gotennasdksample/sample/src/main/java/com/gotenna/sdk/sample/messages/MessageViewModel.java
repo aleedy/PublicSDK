@@ -1,9 +1,9 @@
 package com.gotenna.sdk.sample.messages;
 
+import com.gotenna.sdk.sample.models.Message;
 import com.gotenna.sdk.sample.MyApplication;
 import com.gotenna.sdk.sample.R;
-import com.gotenna.sdk.sample.models.Message;
-import com.gotenna.sdk.sample.models.Message.MessageStatus;
+
 import com.gotenna.sdk.user.User;
 import com.gotenna.sdk.user.UserDataStore;
 
@@ -78,7 +78,7 @@ public class MessageViewModel
         }
     }
 
-    MessageStatus getMessageStatus()
+    Message.MessageStatus getMessageStatus()
     {
         return message.getMessageStatus();
     }

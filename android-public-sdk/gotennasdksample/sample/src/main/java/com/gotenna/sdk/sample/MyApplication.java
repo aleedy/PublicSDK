@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import com.gotenna.sdk.GoTenna;
 import com.gotenna.sdk.exceptions.GTInvalidAppTokenException;
+import com.gotenna.sdk.opensource.GoTennaOpenSource;
 import com.gotenna.sdk.sample.managers.IncomingMessagesManager;
 
 /**
@@ -22,7 +22,7 @@ public class MyApplication extends Application
     //==============================================================================================
 
     private static final String LOG_TAG = "MyApplication";
-    private static final String GOTENNA_APP_TOKEN = "";// TODO: Insert your token
+    private static final String GOTENNA_APP_TOKEN = "EwEdXhkbF0EAQR8DRwcbCxQWVwBHUlgDDxcMAB8DDVIMAgxDQUFcVFEQUxkWXhVQ";// TODO: Insert your token
     private static Context applicationContext;
 
     //==============================================================================================
@@ -38,7 +38,7 @@ public class MyApplication extends Application
         {
             // Must call setApplicationToken before using any SDK methods
             MyApplication.applicationContext = getApplicationContext();
-            GoTenna.setApplicationToken(getApplicationContext(), GOTENNA_APP_TOKEN);
+            GoTennaOpenSource.setApplicationToken(getApplicationContext(), GOTENNA_APP_TOKEN);
             IncomingMessagesManager.getInstance().startListening();
         }
         catch (GTInvalidAppTokenException e)

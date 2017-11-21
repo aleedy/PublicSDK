@@ -5,12 +5,14 @@ import com.gotenna.sdk.commands.GTCommandCenter;
 import com.gotenna.sdk.commands.GTError;
 import com.gotenna.sdk.interfaces.GTErrorListener;
 import com.gotenna.sdk.responses.GTResponse;
-import com.gotenna.sdk.sample.ContactViewModel;
 import com.gotenna.sdk.sample.managers.ContactsManager;
 import com.gotenna.sdk.sample.models.Contact;
+import com.gotenna.sdk.sample.ContactViewModel;
+
 import com.gotenna.sdk.types.GTDataTypes;
 import com.gotenna.sdk.user.User;
 import com.gotenna.sdk.user.UserDataStore;
+
 
 import java.util.ArrayList;
 import java.util.List;

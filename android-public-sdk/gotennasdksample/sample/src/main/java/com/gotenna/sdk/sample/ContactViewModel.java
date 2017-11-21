@@ -1,5 +1,6 @@
 package com.gotenna.sdk.sample;
 
+
 import com.gotenna.sdk.sample.models.Contact;
 
 import java.util.Locale;

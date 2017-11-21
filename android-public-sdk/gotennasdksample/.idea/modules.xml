@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/gotenna-open-source/gotenna-open-source.iml" filepath="$PROJECT_DIR$/gotenna-open-source/gotenna-open-source.iml" />
       <module fileurl="file://$PROJECT_DIR$/gotenna-sdk/gotenna-sdk.iml" filepath="$PROJECT_DIR$/gotenna-sdk/gotenna-sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/gotennasdksample.iml" filepath="$PROJECT_DIR$/gotennasdksample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />

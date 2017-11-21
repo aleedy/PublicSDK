@@ -17,11 +17,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gotenna.sdk.sample.models.Contact;
 import com.gotenna.sdk.sample.ContactViewModel;
 import com.gotenna.sdk.sample.R;
 import com.gotenna.sdk.sample.Utils;
 import com.gotenna.sdk.sample.gid.SetGidActivity;
-import com.gotenna.sdk.sample.models.Contact;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,9 +9,9 @@ import com.gotenna.sdk.messages.GTBaseMessageData;
 import com.gotenna.sdk.messages.GTGroupCreationMessageData;
 import com.gotenna.sdk.messages.GTMessageData;
 import com.gotenna.sdk.messages.GTTextOnlyMessageData;
+import com.gotenna.sdk.sample.models.Message;
 import com.gotenna.sdk.sample.MyApplication;
 import com.gotenna.sdk.sample.R;
-import com.gotenna.sdk.sample.models.Message;
 
 import java.util.ArrayList;
 

@@ -1,11 +1,11 @@
 package com.gotenna.sdk.sample.messages;
 
 import com.gotenna.sdk.bluetooth.GTConnectionManager;
-import com.gotenna.sdk.sample.ContactViewModel;
 import com.gotenna.sdk.sample.managers.ContactsManager;
-import com.gotenna.sdk.sample.managers.IncomingMessagesManager;
 import com.gotenna.sdk.sample.models.Contact;
 import com.gotenna.sdk.sample.models.Message;
+import com.gotenna.sdk.sample.ContactViewModel;
+import com.gotenna.sdk.sample.managers.IncomingMessagesManager;
 import com.gotenna.sdk.user.User;
 import com.gotenna.sdk.user.UserDataStore;
 
