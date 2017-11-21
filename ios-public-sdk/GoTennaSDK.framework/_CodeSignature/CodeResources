@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.DS_Store</key>
-		<data>
-		Ce8I3+1LD2IfXAZxCniXxtohtFQ=
-		</data>
 		<key>DateTools.bundle/ar.lproj/DateTools.strings</key>
 		<dict>
 			<key>hash</key>
@@ -325,7 +321,7 @@
 		</dict>
 		<key>GoTenna-Config.plist</key>
 		<data>
-		HgR6KvFbjYYw+UJEdYXbW+iH3OI=
+		O0JOx6n7HOTg6C3PFaiTuIrWMd4=
 		</data>
 		<key>Headers/BCTSServiceInfo.h</key>
 		<data>
@@ -417,11 +413,11 @@
 		</data>
 		<key>Headers/GTCommandCenter.h</key>
 		<data>
-		lQyjRsuxx3ge7d/ueKZtakYSbCI=
+		PuzBxxO6IkPD7MpqwjV/jefQ3oQ=
 		</data>
 		<key>Headers/GTCommandCodeConstants.h</key>
 		<data>
-		fD+uZKGn2DAH9LgXGe1QvR0O6VM=
+		WPUJcuw8wp7uZlZvLh+G9zrH14s=
 		</data>
 		<key>Headers/GTCommandQueue.h</key>
 		<data>
@@ -817,7 +813,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		PM7sKFodw/VdmVJT1hCshYfuYWk=
+		+jqHZco7s3G4AnCUQVbDeNHlwKM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -1349,11 +1345,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HgR6KvFbjYYw+UJEdYXbW+iH3OI=
+			O0JOx6n7HOTg6C3PFaiTuIrWMd4=
 			</data>
 			<key>hash2</key>
 			<data>
-			OWZmNAxHaRfet4nAeUYrDjVW0acMiN+g30PHu+VWkc0=
+			4R/CJaeNT8c492QTwZMnx+y5YvoWUPOAtplemwTI9+A=
 			</data>
 		</dict>
 		<key>Headers/BCTSServiceInfo.h</key>
@@ -1602,22 +1598,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lQyjRsuxx3ge7d/ueKZtakYSbCI=
+			PuzBxxO6IkPD7MpqwjV/jefQ3oQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			smLCInVaFcOHXBxMk75mA8Fa4faFEYzTEuvNY/A6ZhQ=
+			/h52OgqrX2Gc9Plm1i3Rn1rhhFZ1fac3RB6yPYDU15E=
 			</data>
 		</dict>
 		<key>Headers/GTCommandCodeConstants.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fD+uZKGn2DAH9LgXGe1QvR0O6VM=
+			WPUJcuw8wp7uZlZvLh+G9zrH14s=
 			</data>
 			<key>hash2</key>
 			<data>
-			Su0KpSVy0Zp1sTDE0uk45dJZAyRzb7JiYB/iSqTN+lo=
+			7grzhLo/ujPojJkzpQKMqCul2oLn4hWoLwd8TsQH5Ww=
 			</data>
 		</dict>
 		<key>Headers/GTCommandQueue.h</key>

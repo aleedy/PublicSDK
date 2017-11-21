@@ -107,7 +107,7 @@
         if ([self recipientsNotDisplayed]) {
             Message *message = self.messages[indexPath.row];
             key = ([[UserDataStore shared] isMyGID:message.senderGID]) ? @"Me" : message.senderInfo;
-            value = (message.hopCount > 0) ? [NSString stringWithFormat:@"%@ (%lu hops)", message.text, (unsigned long)message.hopCount] : message.text;
+            value = (message.hopCount > 0) ? [NSString stringWithFormat:@"%@ (%lu hop%@)", message.text, (unsigned long)message.hopCount, (message.hopCount == 1) ? @"s" : @""] : message.text;
         } else {
             Contact *contact = self.recipients[indexPath.row];
             key = contact.name;
@@ -118,7 +118,7 @@
         if (![self recipientsNotDisplayed]) {
             Message *message = self.messages[indexPath.row];
             key = ([[UserDataStore shared] isMyGID:message.senderGID]) ? @"Me" : message.senderInfo;
-            value = (message.hopCount > 0) ? [NSString stringWithFormat:@"%@ (%lu hops)", message.text, (unsigned long)message.hopCount] : message.text;
+            value = (message.hopCount > 0) ? [NSString stringWithFormat:@"%@ (%lu hop%@)", message.text, (unsigned long)message.hopCount, (message.hopCount == 1) ? @"s" : @""] : message.text;
         }
     }
     

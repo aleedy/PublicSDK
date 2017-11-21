@@ -11,7 +11,7 @@
 #import "ChatViewController.h"
 #import "ContactManager.h"
 
-const int MIN_GROUP_MEMBERS = 2;
+const int MIN_GROUP_MEMBERS = 1;
 
 @interface GroupCreateViewController ()
 
@@ -45,23 +45,13 @@ const int MIN_GROUP_MEMBERS = 2;
     [self updateInvitationState:(found ? GroupInvitationStateReceived : GroupInvitationStateNotReceived) contactGID:gid];
     
     if (self.memberResponseCount == [self.recipients count]) {
-        NSMutableArray *memberGIDs = [NSMutableArray arrayWithCapacity:self.recipients.count];
-        
-        for (Contact *contact in self.recipients) {
-            if (contact.invitationState == GroupInvitationStateReceived) {
-                [memberGIDs addObject:contact];
-            }
-        }
-        
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
         cell.userInteractionEnabled = YES;
         
-        if (memberGIDs.count >= MIN_GROUP_MEMBERS) {
-            self.group = [[Group alloc] initWithGID:self.groupGID groupMembers:memberGIDs];
-        }
+        self.group = [[Group alloc] initWithGID:self.groupGID groupMembers:self.recipients];
+        [self reloadSendGroupMessageCell];
     }
     
-    // [self.tableView reloadData];
     [self reloadRecipients];
 }
 
@@ -104,6 +94,12 @@ const int MIN_GROUP_MEMBERS = 2;
 - (void)reloadRecipients {
     [self.tableView beginUpdates];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
+
+- (void)reloadSendGroupMessageCell {
+    [self.tableView beginUpdates];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
 }
 

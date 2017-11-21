@@ -8,6 +8,7 @@
 
 #import "Group.h"
 #import "Contact.h"
+#import <GoTennaSDK/UserDataStore.h>
 
 @interface Group ()
 
@@ -26,15 +27,25 @@
     if (self) {
         _groupGID = gid;
         _groupMembers = groupMembers;
-        
-        if (self.groupMembers) {
-            for (Contact *contact in groupMembers) {
-                contact.invitationState = GroupInvitationStateSending;
-            }
-        }
     }
     
     return self;
+}
+
+# pragma mark - Queries
+
+- (NSArray<Contact *> *)groupMembers {
+    NSMutableArray<Contact *> *mutableGroupMembers = [_groupMembers mutableCopy];
+    
+    // Display all contacts in group except self
+    for (Contact *contact in mutableGroupMembers) {
+        if ([[UserDataStore shared] isMyGID:contact.gid]) {
+            [mutableGroupMembers removeObject:contact];
+            break;
+        }
+    }
+    
+    return mutableGroupMembers;
 }
 
 @end

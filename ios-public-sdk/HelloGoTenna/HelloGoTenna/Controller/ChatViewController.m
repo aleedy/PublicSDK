@@ -66,7 +66,6 @@
 }
 
 - (void)sendMessage:(NSString *)text forConversationType:(GTGIDType)conversationType {
-    // May already be set. Just set anyway
     if (conversationType == GroupGID) {
         self.receivingGID = [self.group groupGID];
     }
@@ -202,15 +201,6 @@
     // Assign handlers
     [[MessagingManager sharedManager] setDelegate:self];
     [[QueueManager sharedManager] setDelegate:self];
-    
-    //TODO: Remove rate limitation testing
-    //#ifdef DEBUG
-    //    for (NSUInteger i = 65; i < 75; i++) {
-    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //            [self sendMessage:[NSString stringWithFormat:@"%c", (unichar)i] forConversationType:ShoutGID];
-    //        });
-    //    }
-    //#endif
 }
 
 - (void)didReceiveMemoryWarning {

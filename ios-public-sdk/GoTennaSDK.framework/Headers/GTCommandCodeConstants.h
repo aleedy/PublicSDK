@@ -15,8 +15,6 @@ extern NSString *const kMessageTypePingTextOnly;
 extern NSString *const kMessageTypeFirmwarePublicKeyResponse;
 extern NSString *const kMessageTypeUserPublicKeyResponse;
 extern NSString *const kMessageTypePublicKeyRequest;
-extern NSString *const kMessageTypeNetRelayRequest;
-extern NSString *const kMessageTypeNetRelaySuccessResponse;
 extern NSString *const kMessageTypeMeshPublicKeyRequest;
 extern NSString *const kMessageTypeMeshPublicKeyResponse;
 

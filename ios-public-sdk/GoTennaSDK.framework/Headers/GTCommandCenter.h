@@ -22,16 +22,15 @@
 
 @interface GTCommandCenter : NSObject
 
-@property (nonatomic, copy) void (^onIncomingMessage)(GTMessageData *);
-@property (atomic, readonly) NSMutableArray *meshMessageToResendList;
-@property (nonatomic, strong) GTResponseDispatcher *responseProcessor;
+/// Called on incoming message.
+@property (nonatomic, copy, nonnull) void (^onIncomingMessage)(GTMessageData * _Nullable);
 
 /**
  Shared instance
  
  @return Singleton instance
  */
-+ (GTCommandCenter *)shared;
++ (nonnull instancetype)shared;
 
 /**
  Send echo
@@ -43,7 +42,7 @@
  @param onResponse Called when your goTenna responds with a postive or negative acknowledgement
  @param onError    Called when an error occurs (See error code for details)
  */
-- (void)sendEchoCommand:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError;
+- (void)sendEchoCommand:(nullable void (^)(GTResponse * _Nullable))onResponse onError:(nullable void (^)(NSError  * _Nullable))onError;
 
 /**
  Set goTenna GID
@@ -56,7 +55,7 @@
  @param username The name of the user who's GID this is.
  @param onError  Called when an error occurs (See error code for details)
  */
-- (void)setgoTennaGID:(NSNumber *)number withUsername:(NSString *)username onError:(void (^)(NSError *))onError;
+- (void)setgoTennaGID:(NSNumber * _Nonnull)number withUsername:(NSString * _Nonnull)username onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Send 1-to-1 Message
@@ -70,11 +69,15 @@
  
  @param messageData    The message's data, such as text, preferably formatted in some easily parse-able format.
  @param destinationGID The GID of the user who will receive this private message (must be 15 digits or less and not 111-111-1111).
- @param fromGID        The response listener callback for the command.
+ @param senderGID      The response listener callback for the command.
  @param onResponse     Called when your goTenna responds with a postive or negative acknowledgement.
  @param onError        Called when an error occurs (See error code for details).
  */
-- (void)sendMessage:(NSData *)messageData toGID:(NSNumber *)destinationGID fromGID:(NSNumber *)senderGID onResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError;
+- (void)sendMessage:(NSData * _Nonnull)messageData
+              toGID:(NSNumber * _Nonnull)destinationGID
+            fromGID:(NSNumber * _Nonnull)senderGID
+         onResponse:(nullable void (^)(GTResponse * _Nullable))onResponse
+            onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Send 1-to-1 Message (with options)
@@ -94,11 +97,11 @@
  @param maxHopCount                 Maximum number of hops this message should make.
  @param shouldNotResendWithMoreHops Indicate that for this message, we should not try to resend the message with more hops if it fails the first time.
  */
-- (void)sendMessage:(NSData *)messageData
-              toGID:(NSNumber *)destinationGID
-            fromGID:(NSNumber *)senderGID
-         onResponse:(void (^)(GTResponse *))success
-            onError:(void (^)(NSError *))onError
+- (void)sendMessage:(NSData * _Nonnull)messageData
+              toGID:(NSNumber * _Nonnull)destinationGID
+            fromGID:(NSNumber * _Nonnull)senderGID
+         onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+            onError:(nullable void (^)(NSError * _Nullable))onError
         maxHopCount:(NSUInteger)maxHopCount shouldNotResendWithMoreHops:(BOOL)shouldNotResendWithMoreHops
            resendID:(int)resendId willEncrypt:(BOOL)willEncrypt;
 
@@ -119,7 +122,11 @@
  @param onError        Called when an error occurs (See error code for details).
  @param resendId       The id of the message to resend that was returned in the previous @c GTResponse or @c GTError.
  */
-- (void)resendMessage:(NSData *)messageData toGID:(NSNumber *)destinationGID fromGID:(NSNumber *)senderGID onResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError resendID:(int)resendId;
+- (void)resendMessage:(NSData * _Nonnull)messageData
+                toGID:(NSNumber * _Nonnull)destinationGID
+              fromGID:(NSNumber * _Nonnull)senderGID
+           onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+              onError:(nullable void (^)(NSError * _Nullable))onError resendID:(int)resendId;
 
 /**
  Resend Message (with options)
@@ -140,11 +147,11 @@
  @param maxHopCount    Maximum number of hops this message should make.
  @param willEncrypt    Whether or not we should encrypt the message.
  */
-- (void)resendMessage:(NSData *)messageData
-                toGID:(NSNumber *)destinationGID
-              fromGID:(NSNumber *)senderGID
-           onResponse:(void (^)(GTResponse *))onResponse
-              onError:(void (^)(NSError *))onError
+- (void)resendMessage:(NSData * _Nonnull)messageData
+                toGID:(NSNumber * _Nonnull)destinationGID
+              fromGID:(NSNumber * _Nonnull)senderGID
+           onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+              onError:(nullable void (^)(NSError * _Nullable))onError
              resendID:(int)resendId
           maxHopCount:(NSUInteger)maxHopCount
           willEncrypt:(BOOL)willEncrypt;
@@ -160,7 +167,10 @@
  @param onError     Called when an error occurs (See error code for details).
  @param resendId    The id of the message to resend that was returned in the previous @c GTResponse or @c GTError.
  */
-- (void)resendBroadcast:(NSData *)messageData onResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError resendID:(int)resendId;
+- (void)resendBroadcast:(NSData * _Nonnull)messageData
+             onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+                onError:(nullable void (^)(NSError * _Nullable))onError
+               resendID:(int)resendId;
 
 /**
  Delete GID
@@ -174,7 +184,7 @@
  @param gidToDelete The GID that should be removed from the goTenna.
  @param onError     Called when an error occurs (See error code for details).
  */
-- (void)deleteGID:(NSNumber *)gidToDelete onError:(void (^)(NSError *))onError;
+- (void)deleteGID:(NSNumber * _Nonnull)gidToDelete onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Broadcast Message
@@ -183,16 +193,20 @@
  @param onResponse  Called on response
  @param onError     Called on error (See error code for details)
  */
-- (void)sendBroadcast:(NSData *)messageData onResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError;
+- (void)sendBroadcast:(NSData * _Nonnull)messageData
+           onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+              onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Emergency Broadcast
  
  @param messageData Message data with text 160 characters or less
- @param success     Called on success
+ @param onResponse  Called on success
  @param onError     Called on error (See error code for details)
  */
-- (void)sendEmergencyBroadcast:(NSData *)messageData onResponse:(void (^)(GTResponse *))success onError:(void (^)(NSError *))onError;
+- (void)sendEmergencyBroadcast:(NSData * _Nonnull)messageData
+                    onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+                       onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Broadcast Message with Hops
@@ -201,10 +215,13 @@
  
  @param messageData Message data with text 160 characters or less
  @param hopCount    How many hops you want the shout to travel
- @param success     Called on success
+ @param onResponse  Called on success
  @param onError     Called on error (See error code for details)
  */
-- (void)sendBroadcast:(NSData *)messageData hopCount:(NSUInteger)hopCount onResponse:(void (^)(GTResponse *))success onError:(void (^)(NSError *))onError;
+- (void)sendBroadcast:(NSData * _Nonnull)messageData
+             hopCount:(NSUInteger)hopCount
+           onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse
+              onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Create Group
@@ -221,7 +238,10 @@
  @param onError          Required. Called on error (See error code for details)
  @return                 Created Group GID
  */
-- (NSNumber *)createGroupWithGIDs:(NSArray *)memberGIDs onMemberResponse:(void (^)(GTResponse *, NSNumber *memberGID))onMemberResponse fromGID:(NSNumber *)senderGID onError:(void (^)(NSError *, NSNumber *))onError;
+- (NSNumber * _Nonnull)createGroupWithGIDs:(NSArray * _Nonnull)memberGIDs
+                          onMemberResponse:(nullable void (^)(GTResponse * _Nonnull, NSNumber * _Nonnull memberGID))onMemberResponse
+                                   fromGID:(NSNumber * _Nonnull)senderGID
+                                   onError:(nullable void (^)(NSError * _Nullable, NSNumber * _Nullable))onError;
 
 /**
  On Group Created
@@ -232,9 +252,9 @@
  
  NOTE: you must have called setGotennaGID with your unique GID to receive these messages
  
- @param externalOnGroupCreate Called when you're added to a group. Contains group info
+ @param externalOnGroupCreate Called when you are added to a group. Contains group info
  */
-- (void)setOnGroupCreated:(void (^)(GTGroupCreationMessageData *))externalOnGroupCreate;
+- (void)setOnGroupCreated:(nullable void (^)(GTGroupCreationMessageData * _Nonnull))externalOnGroupCreate;
 
 /**
  Get System Info
@@ -242,7 +262,8 @@
  @param onSuccess System info response object
  @param onError   Called when an error occurs (See error code for details)
  */
-- (void)sendGetSystemInfoOnSuccess:(void (^)(SystemInfoResponseData *))onSuccess onError:(void (^)(NSError *))onError;
+- (void)sendGetSystemInfoOnSuccess:(nullable void (^)(SystemInfoResponseData * _Nonnull))onSuccess
+                           onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Create Multicast Group
@@ -255,7 +276,7 @@
  @param  multicastGroupGID GID for the multicast group
  @return True if the function ran successfully
  */
-- (BOOL)createMulticastGroup:(NSNumber *)multicastGroupGID;
+- (BOOL)createMulticastGroup:(NSNumber * _Nonnull)multicastGroupGID;
 
 /**
  Set Mesh Geofence Region
@@ -263,7 +284,7 @@
  @param onResponse Called when the command finishes. See the @c responsePositive property for command success.
  @param onError    Called when an error occurs (See error code for details)
  */
-- (void)sendSetGeoRegion:(RegionID)regionID onResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError;
+- (void)sendSetGeoRegion:(RegionID)regionID onResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse onError:(nullable void (^)(NSError * _Nullable))onError;
 
 /**
  Get Mesh Geofence Region
@@ -271,54 +292,51 @@
  @param onResponse Called when the command finishes. See the @c responsePositive property for command success.
  @param onError    Called when an error occurs (See error code for details)
  */
-- (void)sendGetGeoRegionOnResponse:(void (^)(GTResponse *))onResponse onError:(void (^)(NSError *))onError;
+- (void)sendGetGeoRegionOnResponse:(nullable void (^)(GTResponse * _Nonnull))onResponse onError:(nullable void (^)(NSError * _Nullable))onError;
 
+NS_ASSUME_NONNULL_BEGIN
 /*
  * SDK methods not for partners
  */
-
 - (void)resetGotenna;
-- (void)setPublicKey:(NSData *)publicKey;
 - (void)queueCommand:(GTCommand *)command;
-- (void)resetQueue;
-- (void)dispatchResponse:(NSMutableData *)response;
 - (void)sendGetMessageRequest;
 - (void)abortCurrentCommand;
-- (void)sendAntennaSweep:(BOOL)sweepOn;
-- (void)sendFrequencyMode:(FrequencyMode *)sweepOn;
-- (void)sendHardwareTransmit;
-- (void)sendGetBinaryLogOnSuccess:(void (^)(NSArray *binaryLogs, int binaryLogCount))onSuccessResponse
-        onNegativeAcknowledgement:(void (^)())onNackResponse;
-- (void)sendDeleteBinarysLogOnSuccess:(void (^)())onResponse;
+- (void)dispatchResponse:(NSMutableData *)response;
 - (void)sendStoreDateTimeWithEmergencyMessage:(NSString *)emergencyMessage;
-- (void)sendPowerSavingTransmit:(BOOL)on;
 
+// Queue
+- (void)queuePriorityCommands:(GTCommandArray *)array;
 - (void)pauseQueue;
 - (void)nudgeQueue;
-
-- (void)queuePriorityCommands:(GTCommandArray *)array;
-
+- (void)resetQueue;
 - (void)sendHardReset;
-
-- (void)startEmergencyBeaconBroadcastOnResponse:(void (^)(GTResponse *response))onResponse onError:(void (^)(NSError *))onError;
-- (void)stopEmergencyBeaconBroadcastOnResponse:(void (^)(GTResponse *response))onResponse onError:(void (^)(NSError *))onError;
-- (void)getEmergencyBeaconBroadcastStatusOnResponse:(void (^)(BOOL statusReceived))onStatusReceived onError:(void (^)(NSError *))onError;
 
 - (NSArray *)remainingCommands;
 - (GTCommand *)currentQueueCommand;
 
+// goTenna v1 only
+- (void)startEmergencyBeaconBroadcastOnResponse:(void (^)(GTResponse *response))onResponse onError:(void (^)(NSError *))onError;
+- (void)stopEmergencyBeaconBroadcastOnResponse:(void (^)(GTResponse *response))onResponse onError:(void (^)(NSError *))onError;
+- (void)getEmergencyBeaconBroadcastStatusOnResponse:(void (^)(BOOL statusReceived))onStatusReceived onError:(void (^)(NSError *))onError;
+
+// Public keys
 - (void)sendPublicKeyRequestToGID:(NSNumber *)destinationGID;
 - (void)sendPublicKeyResponseToGID:(NSNumber *)destinationGID;
 - (void)sendMyMeshPublicKeyToGID:(NSNumber *)receiverGID;
 
+// Key exchange
 - (void)addPostKeyExchangeMeshMessageToResend:(GTSendCommand *)sendCommand;
 - (void)removePostKeyExchangeMeshMessageFromResend:(GTSendCommand*)sendCommand;
 - (BOOL)hasPostKeyExchangeMeshMessagesToResend;
 
 - (NSArray<GTSendCommand *> *)removedKeyExchangeMessagesRetrievalWithGID:(NSNumber *)gid;
 
-@property (nonatomic, weak) id<BERTestingObserverProtocol> aBERDelegate;
+// Internal use only
+@property (atomic, readonly) NSMutableArray *meshMessageToResendList;
+@property (nonatomic, strong) GTResponseDispatcher *responseProcessor;
 @property (nonatomic, assign) BOOL shouldBlockKeepAliveGet;
 
+NS_ASSUME_NONNULL_END
 
 @end
